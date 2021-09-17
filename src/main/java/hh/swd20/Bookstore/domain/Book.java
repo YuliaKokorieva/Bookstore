@@ -16,7 +16,7 @@ public class Book {
 	private String isbn;
 	private double price;
 	
-	protected Book() {
+	public Book() {
 		super();
 		this.title=null;
 		this.author = null;
@@ -63,6 +63,13 @@ public class Book {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 	@Override

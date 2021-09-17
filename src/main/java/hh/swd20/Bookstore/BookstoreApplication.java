@@ -25,7 +25,7 @@ public class BookstoreApplication {
 			repository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "123123-12"));
 			repository.save(new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "12345456778-23"));
 			
-			log.info("fetch all students");
+			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
 				log.info(book.toString());
 			}
