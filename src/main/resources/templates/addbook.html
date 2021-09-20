@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>Add a new book</h1>
+	<h1 th:text="${header}"></h1>
 	<div>
 		<form th:object="${book}" th:action="@{save}" action="#" method="post">
 			<table>
@@ -14,6 +14,7 @@
 					<tr><td>Author: </td><td><input type="text" th:field="${book.author}"/></td></tr>
 					<tr><td>Year: </td><td><input type="text" th:field="${book.year}" /></td></tr>
 					<tr><td>ISBN: </td><td><input type="text" th:field="${book.isbn}" /></td></tr>
+					<tr><td></td><td><input type="hidden" th:field="${book.id}" /></td></tr>
 				
 				</tbody>
 			</table>
