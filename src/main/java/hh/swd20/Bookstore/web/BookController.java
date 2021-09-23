@@ -26,14 +26,13 @@ public class BookController {
 	@RequestMapping(value = "/addbook")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
-		model.addAttribute("header", "Add a new book");
 		return "addbook";
 	}
 	
 	@RequestMapping(value = "/save")
 	public String saveBook(Book book) {
 		bookRepository.save(book);
-		return "redirect:../booklist";
+		return "redirect:/booklist";
 	}
 	
 	@RequestMapping(value = "/delete/{id}")
@@ -45,18 +44,10 @@ public class BookController {
 	@RequestMapping(value = "/edit/{id}")
 	public String editBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId));
-		model.addAttribute("header", "Edit book");
-		return "addbook";
+		return "editbook";
 	}
 	
-	@RequestMapping(value = "/edit/save")
-	public String saveEditedBook(Book book) {
-		bookRepository.save(book);
-		return "redirect:../booklist";
-	}
-	
-		
-	
+
 		
 
 }
