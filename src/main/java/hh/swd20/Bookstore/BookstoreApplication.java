@@ -9,6 +9,8 @@ import org.springframework.context.annotation.Bean;
 
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.BookRepository;
+import hh.swd20.Bookstore.domain.Category;
+import hh.swd20.Bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -19,15 +21,25 @@ public class BookstoreApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner bookDemo(BookRepository repository) {
+	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
-			log.info("save a couple of books");
-			repository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "123123-12"));
-			repository.save(new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "12345456778-23"));
+			log.info("save a couple of books and categories");
+			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "123123-12"));
+			bookRepository.save(new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "12345456778-23"));
+			
+			categoryRepository.save(new Category("Fiction"));
+			categoryRepository.save(new Category("Kids"));
+			categoryRepository.save(new Category("Non-fiction"));
+			
 			
 			log.info("fetch all books");
-			for (Book book : repository.findAll()) {
+			for (Book book : bookRepository.findAll()) {
 				log.info(book.toString());
+			}
+			
+			log.info("fetch all categories");
+			for (Category category: categoryRepository.findAll()) {
+				log.info(category.toString());
 			}
 		};
 	}
