@@ -24,13 +24,18 @@ public class BookstoreApplication {
 	public CommandLineRunner bookDemo(BookRepository bookRepository, CategoryRepository categoryRepository) {
 		return (args) -> {
 			log.info("save a couple of books and categories");
-			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "123123-12"));
-			bookRepository.save(new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "12345456778-23"));
 			
-			categoryRepository.save(new Category("Fiction"));
-			categoryRepository.save(new Category("Kids"));
-			categoryRepository.save(new Category("Non-fiction"));
+			Category categoryFiction = new Category("Fiction");
+			categoryRepository.save(categoryFiction);
+			Category categoryKids = new Category("Kids");
+			categoryRepository.save(categoryKids);
+			Category categoryNinFiction = new Category("Non-fiction");
+			categoryRepository.save(categoryNinFiction);
 			
+			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "123123-12", categoryFiction));
+			bookRepository.save(new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "12345456778-23", categoryKids));
+			
+		
 			
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {
