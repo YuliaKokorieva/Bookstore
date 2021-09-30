@@ -10,7 +10,7 @@
     <table  class="table table-striped">
 
     	<tr th:each = "category : ${categories}">
-    		<td th:text="${category.name}"></td>
+    		<td th:text="${category.categoryName}"></td>
     	</tr>
      </table> 	
      <a href = "/addcategory"><button class="btn btn-success">Add a new category</button></a>
