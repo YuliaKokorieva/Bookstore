@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 import hh.swd20.Bookstore.domain.Book;
 import hh.swd20.Bookstore.domain.Category;
@@ -32,6 +34,15 @@ public class CategoryController {
 	public @ResponseBody Optional<Category> findBookRest(@PathVariable("id") Long catId) {
 		return categoryRepository.findById(catId);
 	}
+	
+    @RequestMapping(value="/categories", method = RequestMethod.POST)
+    public @ResponseBody Category saveCatRest(@RequestBody Category category) {	
+    	return categoryRepository.save(category);
+    }
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/categorylist")
 	public String getAllCategories(Model model) {
