@@ -23,7 +23,7 @@
 		    <th>Year</th>
 		    <th>Category</th>
 		    <th></th>
-		    <th sec:authorize="hasRole('ADMIN')"></th>
+		    <th sec:authorize="hasAuthority('ADMIN')"></th>
 		</tr>  
     	<tr th:each = "book : ${books}">
     		<td th:text="${book.author}"></td>
