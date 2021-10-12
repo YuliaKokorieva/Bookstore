@@ -52,10 +52,6 @@ public class BookController {
     	return bookRepository.save(book);
     }
 	
-	
-	
-	
-	
 	@RequestMapping(value = "/addbook")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
@@ -69,7 +65,7 @@ public class BookController {
 		return "redirect:/booklist";
 	}
 	
-	@PreAuthorize(value="hasRole('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = "/delete/{id}")
 	public String deleteBook(@PathVariable("id") Long bookId) {
 		bookRepository.deleteById(bookId);

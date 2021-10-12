@@ -32,7 +32,7 @@
     		<td th:text="${book.year}"></td>
     		<td th:text="${book.category.categoryName}"></td>
     		<td><a th:href="@{/edit/{id}(id=${book.id})}"><button class="btn btn-success">Edit</button></a></td>
-    		<td sec:authorize="hasRole('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}"><button class="btn btn-danger">Delete</button></a></td>
+    		<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/delete/{id}(id=${book.id})}"><button class="btn btn-danger">Delete</button></a></td>
     		
  
     	</tr>
