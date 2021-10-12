@@ -35,7 +35,6 @@ public class BookstoreApplication {
 			bookRepository.save(new Book("A Farewell to Arms", "Ernest Hemingway", 1929, "123123-12", categoryFiction));
 			bookRepository.save(new Book("Alice's Adventures in Wonderland", "Lewis Carroll", 1865, "12345456778-23", categoryKids));
 			
-		
 			
 			log.info("fetch all books");
 			for (Book book : bookRepository.findAll()) {

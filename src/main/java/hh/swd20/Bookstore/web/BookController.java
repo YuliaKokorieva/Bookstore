@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
@@ -68,6 +69,7 @@ public class BookController {
 		return "redirect:/booklist";
 	}
 	
+	@PreAuthorize(value="hasRole('ADMIN')")
 	@RequestMapping(value = "/delete/{id}")
 	public String deleteBook(@PathVariable("id") Long bookId) {
 		bookRepository.deleteById(bookId);
@@ -80,4 +82,11 @@ public class BookController {
 		model.addAttribute("categories", categoryRepository.findAll());
 		return "editbook";
 	}
+	
+    @RequestMapping(value="/login")
+	public String login() {
+		return "login";
+	}    
+
+    
 }
