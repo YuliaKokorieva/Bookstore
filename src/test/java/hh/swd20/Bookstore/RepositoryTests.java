@@ -18,7 +18,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 @ExtendWith(SpringExtension.class) 
 @DataJpaTest
-public class RepositoriesTests {
+public class RepositoryTests {
 	@Autowired
 	private BookRepository brepository;
 	@Autowired
@@ -38,12 +38,6 @@ public class RepositoriesTests {
 		brepository.save(book);
 		assertThat(book.getId()).isNotNull();
 	}
-	
-//	@Test
-//	public void deleteBook() {
-//		
-//	}
-//	
 
 	@Test
 	public void findByCatNameShouldReturnCategory() {
